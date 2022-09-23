@@ -1,23 +1,33 @@
-<div class="topnav" id="myTopnav">
-        <a class="abc active" href="/"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a class="abc" href="/order"><i class="fa fa-fw fa-search"></i>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mix Fruit Juicer</title>
+</head>
+<body style="max-height: 1500;">
+    <div class="topnav" id="myTopnav">
+        <a class="abc active" onclick="window.parent.location = '../home.html'"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a class="abc" onclick="window.parent.location = '../Order.html'"><i class="fa fa-fw fa-search"></i>
             Order</a>
-        <a class="abc" href="/contact"><i class="fa fa-fw fa-envelope"></i>
+        <a class="abc" onclick="window.parent.location = '../ContactUs.html'"><i class="fa fa-fw fa-envelope"></i>
             Contact Us</a>
-        <a class="abc" href="/feedback"><i class="fa fa-fw fa-envelope"></i>
+        <a class="abc" onclick="window.parent.location = '../Feedback.html'"><i class="fa fa-fw fa-envelope"></i>
             Feedback</a>
         <div class="dropdown">
             <button class="a dropbtn">Login
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a class="abc" href="/profile">Profile</a>
-                <a class="abc" href="/auth/logout">Logout</a>
+                <a class="abc" onclick="window.parent.location = '../Profile.html'">Profile</a>
+                <a class="abc" onclick="window.parent.location = '../Logout.html'">Logout</a>
             </div>
         </div>
         <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
-    <style>
+</body>
+<style>
     .topnav {
         background-color: #333;
         overflow: auto;
@@ -167,3 +177,5 @@
         });
     }       
 </script>
+
+</html>

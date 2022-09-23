@@ -1,8 +1,57 @@
-<h3>Login</h3>
-<div class="divider">
-</div>
-<div class="section">
-    <a href="/auth/google" class="btn red darken-1">
-        <i class="fab fa-google left"></i> Log in with Google
-    </a>
-</div>
+<section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-2 text-center mb-5">
+                    <h1 style="color: black;" class="heading-section">Login</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-0 col-lg-4">
+                    <div class="login-wrap p-0">
+                        {{!-- <span id="message" style="color:red"></span>
+                        <h3 style="color: black;" class="mb-4 text-center"><b><a style="color: black;" href="SignUp.html">Have an account?SignUp</a></b></h3>
+                        <form action="#" class="signin-form" onsubmit="return verifyPassword()">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="form-group">
+                                <input id="password-field" type="password" class="form-control" placeholder="Password" required>
+                                <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                              </div>
+                            <div class="form-group">
+                                <button type="submit" id="submit" class="form-control btn btn-primary submit px-3"
+                                    href="C:\Users\LENOVO\Downloads\login-form-20\login-form-20\home.html">Login</button>
+
+                            </div>
+                            <a href="Forgot.html" class="mb-4 text-center" style="color: white;"><h5 style="color: white;">Forgot Password</h5></a>
+                        </form> --}}
+                        <div class="social d-flex text-center">
+                            <a href="/auth/google" class="px-2 py-2 ml-md-1 rounded"><span
+                                    class="ion-logo-twitter mr-8"></span>Login with Google</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        function verifyPassword() {
+            var pw = document.getElementById("password-field").value;
+            //minimum password length validation  
+            if (pw.length < 8) {
+                document.getElementById("message").innerHTML = "**Password length must be atleast 8 characters\n \n";
+                return false;
+            }
+
+            //maximum length of password validation  
+            else if (pw.length > 15) {
+                document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";
+                return false;
+            }
+        }  
+    </script>

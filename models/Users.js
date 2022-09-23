@@ -12,11 +12,9 @@ const users = Schema({
     },
     firstName: {
         type: String,
-        required: true
     },
     lastName: {
         type: String,
-        required: true
     },
     image: {
         type: String
