@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-center">
+  <form method="POST" action="/payment/order">
+    <div class="mb-3">
+      <label for="amountInput" class="form-label">Amount</label>
+      <input
+        value="20"
+        disabled
+        name="amount"
+        type="number"
+        min="1"
+        class="form-control form-control-lg"
+        id="amountInput"
+        required
+      />
+
+    </div>
+
+    <div class="d-grid">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        id="getOrderIdBtn"
+      >Submit</button>
+    </div>
+  </form>
+</div>
