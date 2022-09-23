@@ -1,62 +1,79 @@
-const express = require('express')
-const connectDB = require('./config/db_config')
-const morgan = require('morgan')
-const exphbs = require('express-handlebars')
-const path = require('path')
-const session = require('express-session')
-const passport = require('passport')
-const mongoose = require('mongoose')
-const MongoStore = require('connect-mongo')
-const { ensureAuth } = require('./middleware/auth')
-require('dotenv/config')
+const express = require("express");
+const connectDB = require("./config/db_config");
+const morgan = require("morgan");
+const { create } = require("express-handlebars");
+var bodyParser = require('body-parser')
 
+const path = require("path");
+const session = require("express-session");
+const passport = require("passport");
+const mongoose = require("mongoose");
+const MongoStore = require("connect-mongo");
+const { ensureAuth } = require("./middleware/auth");
+const { Double } = require("mongodb");
+require("dotenv/config");
 // config
-const app = express()
+const app = express();
+var jsonParser = bodyParser.json()
+
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+const hbs = create({
+  helpers: {
+    divideByHundred: (param) => {
+      return parseInt(param.data.root.paymentDetail.amount) / 100;
+    },
+    jsonStringify: (param) => {
+      return JSON.stringify(param.data.root.paymentDetail.orderId);
+    },
+  },
+  extname: "hbs",
+  defaultLayout: false,
+});
 
 // passport config
-require('./config/passport')(passport)
-
+require("./config/passport")(passport);
 
 // development console
-if(process.env.NODE_ENV === 'development'){
-    app.use(morgan('dev'))
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
 }
 
-
 // Handlebars
-app.engine('.hbs', exphbs.engine({defaultLayout: 'main', extname: '.hbs'}))
-app.set('view engine', '.hbs')
-
+app.engine(".hbs", hbs.engine);
+app.set("view engine", ".hbs");
 
 // session middleware
-app.use(session({
-    secret: 'Terminators',
+app.use(
+  session({
+    secret: "Terminators",
     resave: false,
-    saveUninitialized:false,
+    saveUninitialized: false,
     store: MongoStore.create({
-        mongoUrl: process.env.DB_CONNECTION,
+      mongoUrl: process.env.DB_CONNECTION,
     }),
-}))
+  })
+);
 
 // passport middleware
-app.use(passport.initialize())
-app.use(passport.session())
-
+app.use(passport.initialize());
+app.use(passport.session());
 
 // static folder
-app.use(express.static(path.join(__dirname, 'public')))
-
+app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
-app.use('/', require('./routes/index'))
-app.use('/auth', require('./routes/auth'))
-app.use('/api', ensureAuth, require('./routes/api'))
-app.use('/test-aksh-api', require('./routes/api'))
+app.use("/", require("./routes/index"));
+app.use("/auth", require("./routes/auth"));
+app.use("/api", ensureAuth, require("./routes/api"));
+app.use("/test-aksh-api", require("./routes/api"));
 
-
+app.use("/payment",urlencodedParser , require("./routes/payment"));
 // connect to db
-connectDB()
+connectDB();
 
 // run server
-const port = process.env.PORT
-app.listen(port, ()=>console.log(`Running in ${process.env.NODE_ENV} on port ${port}`))
+const port = process.env.PORT;
+app.listen(port, () =>
+  console.log(`Running in ${process.env.NODE_ENV} on port ${port}`)
+);
