@@ -1,0 +1,43 @@
+<div class="container p-5 my-5 bg-dark text-black">
+        <label id="Choose Your Juice" name="Choose Your Juice" style="float: none;"><h1>Choose Your Juice Quantity in %</h1></label><br>
+        <p style="font-size: 20px;">Make sure that the combination of both juice total = 100% means 150ml</p><br><br>
+        <form id="order_form" action="/api/orders/create/" method="post">
+            <label>Fruit Juice 1</label>
+            <input type="number" name="juice_a" required placeholder="In %" id="No1" required><br><br>
+            <label>Fruit Juice 2</label>
+            <input type="number" name="juice_b" required placeholder="In %" id="No2" required><br><br>
+            <button id="order" class="btn-primary" style="background-color: white;">Order My Juice</button>
+        </form>
+    </div>
+    <script>
+        const form = document.getElementById("order_form");
+        let FJ=document.querySelector("input#No1");
+        let SJ=document.querySelector("input#No2");
+        form.addEventListener("submit", checkValue);
+        function checkValue(evt){
+            evt.preventDefault();
+            
+            if(parseInt(FJ.value)+parseInt(SJ.value)!=100)
+            {
+                document.getElementById("msg").innerHTML="Sorry,both juice total !=100% please,select right...";
+                alert("Both juice must add upto 100%");
+            } else {
+                evt.target.submit();
+            }
+        }
+        FJ.onchange = function(evt){
+            if(evt.target.value>100){
+                evt.target.value = 100;
+            }
+            if((evt.target.value)%5!=0){
+                var ans = Math.floor((evt.target.value)/5);
+                evt.target.value = ans*5;
+            }
+            SJ.value = 100-evt.target.value;
+       }
+        SJ.onchange = function(evt){
+            if(evt.target.value>100){
+                evt.target.value = 100
+            }
+        }
+    </script>

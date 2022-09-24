@@ -15,8 +15,11 @@ require("dotenv/config");
 // config
 const app = express();
 var jsonParser = bodyParser.json()
+app.use(jsonParser)
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
+app.use(urlencodedParser)
+
 
 const hbs = create({
   helpers: {
@@ -67,8 +70,11 @@ app.use("/", require("./routes/index"));
 app.use("/auth", require("./routes/auth"));
 app.use("/api", ensureAuth, require("./routes/api"));
 app.use("/test-aksh-api", require("./routes/api"));
-
 app.use("/payment",urlencodedParser , require("./routes/payment"));
+
+app.get('/arduino',(req,res)=>{
+  res.status(200).send("done")
+})
 // connect to db
 connectDB();
 

@@ -1,6 +1,83 @@
-<<<<<<< HEAD
-=======
-<h6>Dashboard</h6>
-<h3>Welcome {{name}}</h3>
-<a href="/payment">Payment</a>
->>>>>>> 22f250ebacf381adcc89a05df8e33c305473add5
+<body style="width:100%; height:100%;background-color: black;">
+    <div style="color: beige; text-align: left;">
+        <h1>Introduction</h1><br>
+        <h4 class="b" style="font-size:14px; min-width: auto;">
+            <li>“Treat yourself with the customised drink of your choice.”</li><br>
+            <li>For your mock tail, we are here to provide you the ability to control the composition and quantity of
+                diffe rent
+                juices mixed.</li> <br>
+            <li>Our website allows you to remotely place the order for your drink from any nearby place, so that you
+                just
+                have
+                to come and pick up your customised drink. <br></li>
+            <li>In order to provide freshly dispensed drink from the machine, a code verification is required, which
+                ensures
+                the
+                presence of the customer near the machine. <br></li>
+        </h4><br>
+    </div>
+    
+    </div>
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <div class="numbertext">1 / 4</div>
+            <img src="images/FJ1.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">2 / 4</div>
+            <img src="images/FJ2.jpg" style="width:100%">
+        </div>
+
+        <div class="mySlides fade">
+            <div class="numbertext">3 / 4</div>
+            <img src="images\FJ3.jpg" style="width:100%">
+        </div>
+        <div class="mySlides fade">
+            <div class="numbertext">4 / 4</div>
+            <img src="images/FJ4.JPG" style="width:100%">
+        </div>
+    </div>
+    <br>
+    <div style="text-align:center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+    <div style="color: beige; text-align: left; font-size: 12px;">
+        <br><h1>How to use?</h1><br><br> 
+        <h4>
+            <ol class="c" style="font-size:14px;">
+                <li>Visit website/app</li><br>
+                <li>Select drinks</li><br>
+                <li>Select quantity</li><br>
+                <li>Pay for your order</li><br>
+                <li>Code verification </li><br>
+                <li>Collection of order</li><br>
+            </ol>
+        </h4>
+    </div>
+    <a href="/orders" type="button" class="btn btn-primary btn-lg text-center" style="max-width: 600px;">Order
+        Now!</a><br><br><br>
+</body>
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        setTimeout(showSlides, 2000); // Change image every 2 seconds
+    }
+</script>

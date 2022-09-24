@@ -12,19 +12,10 @@ const users = Schema(
       required: true,
     },
     firstName: {
-<<<<<<< HEAD
         type: String,
     },
     lastName: {
         type: String,
-=======
-      type: String,
-      required: true,
-    },
-    lastName: {
-      type: String,
-      required: true,
->>>>>>> 22f250ebacf381adcc89a05df8e33c305473add5
     },
     image: {
       type: String,
